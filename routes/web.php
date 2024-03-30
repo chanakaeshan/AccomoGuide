@@ -61,3 +61,8 @@ Route::get('admin_create_account', function () {
 Route::get('share_article', function () {
     return view('share_article');
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
