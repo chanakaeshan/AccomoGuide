@@ -36,7 +36,7 @@
         </div>
         
     </div>
-  <script>
+    <script>
         // Use jQuery.noConflict() to avoid conflicts with other libraries
         jQuery.noConflict();
         // Use jQuery instead of $ after this point
