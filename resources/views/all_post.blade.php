@@ -9,8 +9,9 @@
 </head>
 <body>
     <header>
-        <h1>All Posts</h1>
+        
     </header>
+    <h1>All Posts</h1>
     <nav>
         <ul>
             <li><a href="students_page">Home</a></li>

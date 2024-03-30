@@ -11,6 +11,7 @@
     <div class="register-container">
         <img src="/img/a.jpg" alt="Logo" id="logo">
         <h2>LogIn</h2>
+
         <form action="register_process.php" method="POST">
             <input type="text" name="username" placeholder="Username" required><br>
             <input type="password" name="password" placeholder="Password" required><br>

@@ -19,6 +19,13 @@ header h1 {
     letter-spacing: 0cap;
 }
 
+h1 {
+    text-align: center;
+    padding-bottom : 30px;
+    font-size: 36pt;
+}
+
+
 nav {
     padding: 10px 0;
 }

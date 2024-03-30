@@ -9,8 +9,9 @@
 </head>
 <body>
     <header>
-        <h1>Create Account</h1>
+        
     </header>
+    <h1>Create Account</h1>
     <nav>
         <ul>
             <li><a href="admin_create_account">Create Account</a></li>
