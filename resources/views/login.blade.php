@@ -4,7 +4,6 @@
 <head>
     <title>Login</title>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
     <link rel="stylesheet" href="css/register_style.css">
 </head>
 
@@ -54,16 +53,36 @@
                     type: 'POST',
                     data: formData,
                     success: function(response) {
+
+                        console.log("abcd")
                     
                        if(response.message != "Successfully Logged In!"){
                         $('#responseMessage').removeClass('success-message').addClass('error-message').html('<p>Error: ' + response.error + '</p>');
                         // window.location("/landing_page")
 
                        }else{
-                         $('#responseMessage').removeClass('error-message').addClass('success-message').html('<p>' + response.message + '</p>');
+    
+                        let userType = response.data.userType
+                        let redirect_url = "";
+
+                        if(userType === "LANDLORD"){
+                            redirect_url = "/landing_page"
+                        }
+                        else if(userType === "WEB_MASTER"){
+                            redirect_url = "/admin_create_account"
+                        }
+                        else if(userType === "WARDEN") {
+                            redirect_url = "/warden_page"
+                        }
+                        else if(userType === "STUDENT"){
+                            redirect_url = "/students_page"
+                        } 
+
+                          let successMessage = '<p>' + response.message + '</p><br><a href="' + redirect_url + '">Okay</a>';
+                $('#responseMessage').removeClass('error-message').addClass('success-message').html(successMessage);
                        }
-                        // $('#email').val('');
-                        // $('#password').val('');
+                        $('#email').val('');
+                        $('#password').val('');
                     }
                 });
             });
