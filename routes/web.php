@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\NodeJsApiController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -9,14 +11,13 @@ Route::get('/students_page', function () {
     return view('students_page');
 });
 
-Route::get('/register', function () {
-    return view('register');
+Route::get('/login', function () {
+    return view('login');
 });
 
 Route::get('/admin', function () {
     return view('admin');
 });
-
 
 Route::get('/artical', function () {
     return view('artical');
@@ -61,8 +62,6 @@ Route::get('admin_create_account', function () {
 Route::get('share_article', function () {
     return view('share_article');
 });
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
+Route::post('/signup', [NodeJsApiController::class, 'signup']);

@@ -1,6 +1,5 @@
 body {
     font-family: Arial, sans-serif;
-    background-image: url('g.jpg');
     background-size: cover;
     margin: 0;
     display: flex;
@@ -67,4 +66,22 @@ button:hover {
 .login-button {
     text-align: center;
     margin-top: 10px;
+}
+
+.response-message {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.error-message {
+    color: red;
+    background-color: #f8d7da;
+    /* Light red */
+}
+
+.success-message {
+    color: green;
+    background-color: #d4edda;
+    /* Light green */
 }

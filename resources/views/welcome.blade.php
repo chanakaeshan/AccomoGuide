@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>AccomoGuide</title>
 	<link rel="stylesheet" href="/css/welcome.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	@include('components.navbar')
 </head>
 <body>
@@ -20,9 +21,11 @@
 			<h2>Find the Accommodation | List your Accommodation</h2>
 			<br>
 			
-			<a href="register">Get Start</a>
+			<a href="login">Get Start</a>
 			<a href="landlord_registration">Landlord</a>
 		</div>
 	</div>
+
+
 </body>
 </html>
