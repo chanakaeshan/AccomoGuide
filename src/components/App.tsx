@@ -27,6 +27,10 @@ import MainDashboard2 from "./Admin/MainDashboard_new";
 import Feed from "./Admin/MainDashboard_new";
 import VerifyEmail from "./Admin/UserManagement/verify-email";
 import Profile from "./Admin/Personal/Profile";
+import Landing from "./common/LandingPage";
+import WardenPage from "./common/WardenPage";
+import StudentPage from "./common/StudentPage";
+import StudentTestPage from "./common/StudentTestPage";
 
 const languages = ["en", "fr"];
 
@@ -52,8 +56,6 @@ i18n
   });
 
 const App: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean>();
-  const [tournament, setTournament] = useState<any>();
   return (
     <Router>
       <Switch>
@@ -63,11 +65,18 @@ const App: React.FC = () => {
         <Route path={RouteName.SIGNUP}>
           <SignUp />
         </Route>
-        <Route path="/verify-email">
-          <VerifyEmail />
+        <Route path={RouteName.HOME}>
+          <Landing />
+        </Route>
+        {/* ============================================================== */}
+        <Route path={RouteName.WARDEN_PAGE}>
+          <WardenRouter />
+        </Route>
+        <Route>
+          <StudentRouter />
         </Route>
 
-        <Route path="/">
+        {/* <Route path="/">
           <Auth>
             <div className="page-container">
               <div className="content-wrap">
@@ -79,9 +88,6 @@ const App: React.FC = () => {
                       </VerifyRole>
                     </Route>
                     <Route path="/hs">
-                      {/* <VerifyRole allow={[Role.DONOR]}>
-                        <DonorRouter />
-                      </VerifyRole> */}
                       <VerifyRole allow={[Role.RECEIVER]}>
                         <PatientRouter />
                       </VerifyRole>
@@ -91,55 +97,34 @@ const App: React.FC = () => {
               </div>
             </div>
           </Auth>
-        </Route>
+        </Route> */}
       </Switch>
     </Router>
   );
 };
 
-const SuperAdminRouter: React.FC = () => {
-  return (
-    <ContentLayout>
-      <Router>
-        <Route
-          path={[RouteName.ADMIN_USER_MANAGEMENT]}
-          exact
-          render={() => (
-            <>
-              <NavBar />
-              <SidePane>
-                <AdminSideBar />
-              </SidePane>
-            </>
-          )}
-        />
-        <Content>
-          <Switch>
-            <Route path={RouteName.ADMIN_USER_MANAGEMENT}>
-              <UserManagement />
-            </Route>
-
-            <Route path="*">
-              <NotFound />
-            </Route>
-          </Switch>
-        </Content>
-      </Router>
-    </ContentLayout>
-  );
-};
-// const DonorRouter: React.FC = () => {
+// const SuperAdminRouter: React.FC = () => {
 //   return (
 //     <ContentLayout>
 //       <Router>
+//         <Route
+//           path={[RouteName.ADMIN_USER_MANAGEMENT]}
+//           exact
+//           render={() => (
+//             <>
+//               <NavBar />
+//               <SidePane>
+//                 <AdminSideBar />
+//               </SidePane>
+//             </>
+//           )}
+//         />
 //         <Content>
 //           <Switch>
-//             <Route>
-//               <NavBar />
+//             <Route path={RouteName.ADMIN_USER_MANAGEMENT}>
+//               <UserManagement />
 //             </Route>
-//             <Route path={RouteName.ADMIN_MAIN_DASHBOARD} exact>
-//               <Feed />
-//             </Route>
+
 //             <Route path="*">
 //               <NotFound />
 //             </Route>
@@ -149,22 +134,62 @@ const SuperAdminRouter: React.FC = () => {
 //     </ContentLayout>
 //   );
 // };
-const PatientRouter: React.FC = () => {
+
+// const PatientRouter: React.FC = () => {
+//   return (
+//     <ContentLayout>
+//       <Router>
+//         <Route>
+//           <NavBar />
+//         </Route>
+//         <Content>
+//           <Switch>
+//             <Route path={RouteName.ADMIN_MAIN_DASHBOARD} exact>
+//               <MainDashboard2 />
+//             </Route>
+//             <Route path={RouteName.ADMIN_PROFILE} exact>
+//               <Profile />
+//             </Route>
+
+//             <Route path="*">
+//               <NotFound />
+//             </Route>
+//           </Switch>
+//         </Content>
+//       </Router>
+//     </ContentLayout>
+//   );
+// };
+const WardenRouter: React.FC = () => {
   return (
     <ContentLayout>
       <Router>
-        <Route>
-          <NavBar />
-        </Route>
         <Content>
           <Switch>
-            <Route path={RouteName.ADMIN_MAIN_DASHBOARD} exact>
-              <MainDashboard2 />
+            <Route path={RouteName.WARDEN_PAGE} exact>
+              <WardenPage />
             </Route>
-            <Route path={RouteName.ADMIN_PROFILE} exact>
-              <Profile />
+            <Route path="*">
+              <NotFound />
             </Route>
-
+          </Switch>
+        </Content>
+      </Router>
+    </ContentLayout>
+  );
+};
+const StudentRouter: React.FC = () => {
+  return (
+    <ContentLayout>
+      <Router>
+        <Content>
+          <Switch>
+            <Route path={RouteName.STUDENT_PAGE} exact>
+              <StudentPage />
+            </Route>
+            <Route path={RouteName.STUDENT_TEST_PAGE} exact>
+              <StudentTestPage />
+            </Route>
             <Route path="*">
               <NotFound />
             </Route>

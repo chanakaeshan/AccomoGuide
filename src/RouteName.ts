@@ -8,4 +8,10 @@ export enum RouteName {
   // ADMIN_PROFILE = "/admin/profile/:tournamentId?",
   ADMIN_MAIN_DASHBOARD = "/hs/home",
   ADMIN_PROFILE= "/hs/profile/:userId?",
+  HOME = "/home",
+  WARDEN_PAGE = "/warden-page",
+  STUDENT_PAGE = "/student-page",
+  STUDENT_TEST_PAGE = "/student/test"
+
+
 }

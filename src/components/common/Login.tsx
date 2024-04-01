@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useHistory, NavLink } from "react-router-dom";
 import { AuthService } from "../../services/AuthService";
 import { RequestState } from "../../RequestState";
-import swal from "sweetalert";
+// import swal from "sweetalert";
 import { RouteName } from "../../RouteName";
-import "../vendors/styles/healthSpaceStyles.css";
+import "../vendors/styles/login.css";
 import loginImageLeft from "../../components/vendors/images/loginImageLeft.svg";
 import loginImageRight from "../../components/vendors/images/loginImageRight.jpg";
 import loginCardImage from "../../components/vendors/images/loginCardImage.svg";
@@ -62,7 +62,7 @@ const Login: React.FC = () => {
           setLoginRequestState(RequestState.FAILED);
         });
     } else if (loginRequestState === RequestState.FAILED) {
-      swal({ title: "User login fail!", icon: "error" });
+      // swal({ title: "User login fail!", icon: "error" });
     }
     // else if (loginRequestState === RequestState.SUCCESS) {
     //   if (token || loginRequestState === RequestState.SUCCESS) {
@@ -111,12 +111,12 @@ const Login: React.FC = () => {
         } else {
           if (!isVerified) {
             sessionStorage.clear();
-            swal({ icon: "error", title: "User not verified yet!" });
+            // swal({ icon: "error", title: "User not verified yet!" });
           }
         }
       } else {
         sessionStorage.clear();
-        swal({ icon: "error", title: "User not verified yet!" });
+        // swal({ icon: "error", title: "User not verified yet!" });
       }
     } catch (error) {
       console.error("Error while verifying user:", error);
@@ -137,94 +137,39 @@ const Login: React.FC = () => {
 
   return (
     <>
-      <div className="login-page">
-        <div className="all-bg">
-          <img src={loginImageRight} alt="Right Background" />
-        </div>
+      <div className="register-container">
+        <img src="/img/a.jpg" alt="Logo" id="logo"></img>
+        <h2>LogIn</h2>
 
-        <div className="container">
-          <div className="login-body d-lg-flex text-center ">
-            <div className="box-1 mt-md-0 ">
-              <div className="mt-5 d-flex justify-content-center">
-                <div className="login-form ">
-                  <div className="mb-4">
-                    <NavLink to={"/login"}>
-                      <img
-                        src={Logo}
-                        className="main-logo w-100"
-                        alt="healthspace_logo"
-                      />
-                    </NavLink>
-                  </div>
-                  <form onSubmit={submitLogin}>
-                    <p className="mb-1 h-1 text-center login-header">Login</p>
+        <form action="register_process.php" method="POST">
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            required
+          ></input>
+          <br></br>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+          ></input>
+          <br></br>
+          <select name="role" required>
+            <option value="">Select Role</option>
+            <option value="landlord">Landlord</option>
+            <option value="warden">Warden</option>
+            <option value="student">Student</option>
+            <option value="admin">Admin</option>
+          </select>
+          <br></br>
+        </form>
 
-                    <div className="textbox mt-5">
-                      <FontAwesomeIcon
-                        icon={faEnvelope}
-                        className="input-icon"
-                      />
-                      <input
-                        type="email"
-                        placeholder="Email"
-                        name="email"
-                        required
-                      />
-                    </div>
-                    <div className="textbox mt-3">
-                      <FontAwesomeIcon icon={faKey} className="input-icon" />
-                      <input
-                        type="password"
-                        placeholder="Password"
-                        name="password"
-                        required
-                      />
-                    </div>
-                    <div className="d-lg-flex justify-content-between mt-4 mb-3">
-                      <label className="checkbox-label">
-                        <input
-                          type="checkbox"
-                          id="lightBlueCheckbox"
-                          className="custom-checkbox"
-                          onChange={handleChange}
-                        />
-                        {/* <span className="custom-checkbox-icon"></span>
-                        Remember me */}
-                      </label>
-                      {/* <p className="checkbox-label-para cursor-p">
-                        Forgot your password?
-                      </p> */}
-                    </div>
-                    <div className="d-lg-flex justify-content-center mt-4 mb-5">
-                      <button className="login-btn" type="submit">
-                        Login
-                        <span className="fas fa-chevron-right ml-1 login-span text-white"></span>
-                      </button>
-                    </div>
-                    <div className="d-flex justify-content-center mt-5">
-                      <span className="login-end-text mt-1">
-                        Do you want to try out ?
-                      </span>
-                      {/* <span
-                        className="ml-3 signup-btn mt-2 cursor-p"
-                        onClick={() => handleOpenModal()}
-                      >
-                        Contact us
-                      </span> */}
-                      <NavLink to={"/signup"}>
-                        <span className="ml-3 signup-btn mt-2 cursor-p">
-                          SignUp now
-                        </span>
-                      </NavLink>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-            <div className=" box-2 d-flex flex-column h-100">
-              <img src={rightBg} alt="Right Background" />{" "}
-            </div>
-          </div>
+        <div className="login-button">
+          <form>
+            <button type="submit">LOGIN</button>
+          </form>
         </div>
       </div>
     </>

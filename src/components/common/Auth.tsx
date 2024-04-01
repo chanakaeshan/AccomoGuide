@@ -29,7 +29,7 @@ const Auth: React.FC = ({ children }) => {
     } else {
       console.log("no token found");
       sessionStorage.clear();
-      window.location.href = "/login";
+      window.location.href = "/student/test";
     }
   }
 
